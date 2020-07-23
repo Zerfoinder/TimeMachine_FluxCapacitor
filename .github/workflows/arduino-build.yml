@@ -9,10 +9,10 @@ jobs:
     strategy:
       matrix:
         arduino-boards-fqbn:
-          - arduino:avr:micro
-          - arduino:avr:nano
-          - arduino:avr:uno
-          - arduino:avr:mega
+          - arduino:avr:micro|All-DEBUG
+          - arduino:avr:nano|All-DEBUG
+          - arduino:avr:uno|All-DEBUG
+          - arduino:avr:mega|All-DEBUG
       fail-fast: false
     steps:
       - name: Checkout
