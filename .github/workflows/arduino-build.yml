@@ -4,18 +4,25 @@ jobs:
   build:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
-    
+
     strategy:
       matrix:
         arduino-boards-fqbn:
-          - arduino:avr:micro|All-DEBUG
-          - arduino:avr:nano|All-DEBUG
-          - arduino:avr:uno|All-DEBUG
-          - arduino:avr:mega|All-DEBUG
+          - arduino:avr:micro
+          - arduino:avr:nano
+          - arduino:avr:uno
+          - arduino:avr:mega
       fail-fast: false
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+
+      - name: Checkout EasyPin library
+        uses: actions/checkout@v2
+        with:
+          repository: Zerfoinder/EasyPin
+          ref: master
+          path: CustomLibrary_EasyPin
 
       - name: Compile all examples
         uses: ArminJo/arduino-test-compile@v2
