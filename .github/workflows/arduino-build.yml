@@ -4,8 +4,7 @@ jobs:
   build:
     name: ${{ matrix.arduino-boards-fqbn }} - test compiling examples
     runs-on: ubuntu-latest
-    #env:
-    #  REQUIRED_LIBRARIES: EasyPin
+    
     strategy:
       matrix:
         arduino-boards-fqbn:
@@ -18,16 +17,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      #- name: Checkout EasyPin library
-      #  uses: actions/checkout@v2
-      #  with:
-      #    repository: Zerfoinder/EasyPin
-      #    ref: master
-      #    path: CustomLibrary_EasyPin
-
       - name: Compile all examples
         uses: ArminJo/arduino-test-compile@v2
         with:
           arduino-board-fqbn: ${{ matrix.arduino-boards-fqbn }}
           platform-url: ${{ matrix.platform-url }}
-          #required-libraries: ${{ env.REQUIRED_LIBRARIES }} 
