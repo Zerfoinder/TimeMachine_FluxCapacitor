@@ -29,7 +29,7 @@ When the flux is turned on,  it is set to level 1.
 ### The Circuit
 ![image info](./extras/FluxCapacitor-LEDs-Diagram.png)
 
-It is the responsibility of the user to generate desired the code so that the level change is made at desired time.
+It is the responsibility of the user to generate the code that changes levels at desired time.
 
 
 ## Usage
