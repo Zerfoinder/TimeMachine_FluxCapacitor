@@ -25,9 +25,9 @@
 
 /**
  *  name:         FluxCapacitor
- *  version:      1.0
+ *  version:      0.1.1
  *  Author:       Luis Acosta <zerfoinder@gmail.com>
- *  Date:         2020-07-16
+ *  Date:         2020-07-22
  *  Description:  FluxCapacitor is an Arduino Library to manage leds to emulate Back to the Future's Flux Capacitor.
  */
 
@@ -36,7 +36,7 @@
 
 #include <EasyPin.h>
 
-using namespace zsoft::tools;
+using namespace zsoft::io::utilities;
 
 namespace bttf::timemachine {
 
@@ -46,7 +46,7 @@ namespace bttf::timemachine {
     enum FluxType {
         FIVE_LEDS = 0,   //  FIVE LEDS FLUX CAPACITOR
         FOUR_LEDS = 1,   //  FOUR LEDS FLUX CAPACITOR
-        ONE_LED = 2      //  ONE LED FLUX CAPACITOR
+        //ONE_LED = 2      //  ONE LED FLUX CAPACITOR
     };
 
     /** FluxType is an enum to define pin mode. */
@@ -64,14 +64,36 @@ namespace bttf::timemachine {
      * @brief      This class describes a flux capacitor.
      */
     class FluxCapacitor {
-      public:
+
+        /** -------------- CONSTANTS --------------- */
+        /**
+         * brightness level array
+         */
+        static const byte ledBrightness[];
 
         /**
-         * @brief      Constructs a new instance.
-         *
-         * @param[in]  pinNumber  The pin number in Arduino board.
+         * blink speed level array
          */
-        FluxCapacitor(byte pinNumber);
+        static const byte ledBlinkSpeed[];
+
+        /**
+         * Flux Capacitor MAX_LEVEL to reach.
+         */
+        static const byte MAX_LEVEL = 8;
+
+        /**
+         * Flashing duration milliseconds
+         */
+        static const unsigned long defaultFlashingDuration = 200;
+
+      public:
+
+        // /**
+        //  * @brief      Constructs a new instance.
+        //  *
+        //  * @param[in]  pinNumber  The pin number in Arduino board.
+        //  */
+        //FluxCapacitor(byte pinNumber);
 
         /**
          * @brief      Constructs a new instance for 4 LEDs.
@@ -139,7 +161,7 @@ namespace bttf::timemachine {
 
         /**
          * @brief      Returns the current Flux Capacitor level.
-         *
+         *             
          * @return     The current Flux Capacitor level.
          */
         byte level(void);
@@ -187,17 +209,7 @@ namespace bttf::timemachine {
         void _setCenterLedBrightness(void);
 
 
-        /************ VARIABLES ***************/
-
-        /**
-         * Flux Capacitor level
-         */
-        byte _level;
-
-        /**
-         * Flux Capacitor state
-         */
-        FluxState _state;
+        /************ PROPERTIES ***************/
 
         /**
          * Flux Type
@@ -210,16 +222,44 @@ namespace bttf::timemachine {
         int _leds;
 
         /**
+         * EasyPin array
+         */
+        EasyPin _pins[5];
+
+        /************ VARIABLES ***************/
+        /**
+         * Flux Capacitor level
+         */
+        byte _level;
+
+        /**
+         * Flux Capacitor state
+         */
+        FluxState _state;
+
+        /**
          * Led Iterator for LEDs array
          */
         byte _ledIterator;
 
         /**
-         * EasyPin array
+         * local variable used to save last loop millis()
          */
-        EasyPin _pins[];
+        unsigned long _lastLoopMillis = 0;
+
+        /**
+         * Variables used for flashing
+         */
+        unsigned long _flashingMillis = 0;
+        FluxState _backupState = STOPPED;
+
+        /**
+         * local variable for center LED brightness
+         */
+        int _centerLedBrightness = 0;
+
     }; // end class FluxCapacitor
 
-} // end namespace zsoft::bttf
+} // end namespace bttf::timemachine
 
 #endif // TIMEMACHINE_FLUX_CAPACITOR_H

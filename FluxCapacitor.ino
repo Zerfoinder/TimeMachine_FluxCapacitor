@@ -26,7 +26,7 @@
 
 //-----------------------------------------
 // Add include to FluxCapacitor
-#include <FluxCapacitor.h>
+#include "FluxCapacitor.h"
 
 //-----------------------------------------
 // Add using namespace bttf::timemachine
@@ -38,7 +38,7 @@ using namespace bttf::timemachine;
  *    - First parameter is used as pin for Central led
  *    - next pins are sorted from the center outward
  */
-FluxCapacitor fluxCapacitor(3, 5, 6, 9); // common PWM pins for many boards.
+FluxCapacitor fluxCapacitor(3, 5, 6, 9, 10); // common PWM pins for many boards.
 
 /**
  * Used to increase Flux Capacitor level every 3 seconds.

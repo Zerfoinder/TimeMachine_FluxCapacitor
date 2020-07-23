@@ -40,10 +40,10 @@ using namespace bttf::timemachine;
  *    - First parameter is used as pin for Central led
  *    - next pins are sorted from the center outward
  */
-FluxCapacitor fluxCapacitor(13, 3, 5, 6, 9); // some Arduino MEGA PWM pins.
+FluxCapacitor fluxCapacitor(3, 5, 6, 9, 10); // common PWM pins for many boards.
 
 /**
- * Used to increase Flux Capacitor level every 5 seconds.
+ * Used to increase Flux Capacitor level every 3 seconds.
  */
 unsigned long _previousExecutionMillis = 0;
 
@@ -51,7 +51,7 @@ unsigned long _previousExecutionMillis = 0;
 void setup() {
 
     // initialize led
-    fluxCapacitor.init();       // REQUIRED
+    fluxCapacitor.init();  // REQUIRED
 
 }
 
