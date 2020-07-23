@@ -18,12 +18,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
-      - name: Checkout EasyPin library
-        uses: actions/checkout@v2
-        with:
-          repository: Zerfoinder/EasyPin
-          ref: master
-          path: CustomLibrary_EasyPin
+      #- name: Checkout EasyPin library
+      #  uses: actions/checkout@v2
+      #  with:
+      #    repository: Zerfoinder/EasyPin
+      #    ref: master
+      #    path: CustomLibrary_EasyPin
 
       - name: Compile all examples
         uses: ArminJo/arduino-test-compile@v2
