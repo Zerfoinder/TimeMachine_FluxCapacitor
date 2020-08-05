@@ -27,10 +27,10 @@ When the flux is off, it is on level 0.
 When the flux is turned on,  it is set to level 1.
 
 ### The Circuit
+
 ![image info](./extras/FluxCapacitor-LEDs-Diagram.png)
 
 It is the responsibility of the user to generate the code that changes levels at desired time.
-
 
 ## Usage
 
@@ -75,13 +75,17 @@ void loop() {
 ```
 
 ## Components and functions
+
 ### FluxCapacitor Class
+
 #### Example
+
 ```C++
 FluxCapacitor fluxCapacitor(3, 5, 6, 9, 10); // common PWM pins for many boards.
 ```
 
 #### Public methods
+
 | Method | Description |
 | ---------- | ----------- |
 | `FluxCapacitor(byte pinNumberCentral, byte pinNumberA, byte pinNumberB, byte pinNumberC);` | Constructor for 4 LEDs Flux. |
@@ -98,9 +102,11 @@ FluxCapacitor fluxCapacitor(3, 5, 6, 9, 10); // common PWM pins for many boards.
 | `.loop();`    | function used to manage concurrent actions. It should be ALWAYS added in the end of sketch loop() method. |
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 [![donate](https://img.shields.io/badge/donate-PayPal-blue.svg)](https://paypal.me/zerfoinder)
 
 ## License
+
 This library is licensed under [GPLv3](https://www.gnu.org/licenses/quick-guide-gplv3.html).
